@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+    font-family: "Kumbh Sans", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    background-color: white;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px;
+}
+
+.image .box {
+    display: none;
+}
+
+.image {
+    background-image: url("/images/bg-pattern-mobile.svg");
+    background-repeat: no-repeat;
+    background-position-x: 55%;
+}
+
+.images .mobile {
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translate(-55%, -50%);
+}
+
+.images .desktop {
+    display: none;
+}
+
+.faq {
+    padding: 0 1.5rem;
+}
+
+.faq h1 {
+    text-align: center;
+    color: hsl(238, 29%, 16%);
+    font-weight: 700;
+}
+
+.accordion {
+    padding: 1rem 0;
+}
+
+.item {
+    overflow: hidden;
+}
+
+.accordion .item button {
+    background: none;
+    outline: none;
+    border: none;
+    color: hsl(237, 12%, 33%);
+    font-weight: 400;
+    font-size: .8rem;
+    padding: 1rem 0;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid hsl(240, 5%, 91%);
+    cursor: pointer;
+}
+
+.accordion .item button::after {
+    content: url("/images/icon-arrow-down.svg");
+    float: right;
+    margin-right: 1rem;
+}
+
+.accordion .item button.active::after {
+    transform: rotate(180deg);
+}
+
+.accordion .item button:hover {
+    color: hsl(14, 88%, 65%);
+    font-weight: 700;
+}
+
+.accordion .item button.active {
+    border-bottom: none;
+    color: hsl(237, 12%, 33%);
+    font-weight: 700;
+}
+
+.accordion .item .content {
+    transition: .2s ease;
+    max-height: 0;
+}
+
+.accordion .item .content.active {
+    border-bottom: 1px solid hsl(240, 5%, 91%);
+}
+
+.accordion .item .content p {
+    font-size: .8rem;
+    padding: 0 1rem 1rem 0;
+    line-height: 1rem;
+    color: hsl(240, 6%, 50%);
+}
+
+@media (min-width:500px) {
+    .image {
+        background-position-x: 50%;
+    }
+}
+
+@media (min-width: 800px) {
+    main {
+        max-width: 800px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .image {
+        background-image: url("/images/bg-pattern-desktop.svg");
+        background-size: 150%;
+        background-position: center right;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .images {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .images .mobile {
+        display: none;
+    }
+
+    .images .desktop {
+        display: block;
+        max-width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-15%, -50%);
+    }
+
+    .image .box {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-50%, -30%);
+    }
+
+    .box {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 18%;
+        transform: translate(-30%, -30%);
+        z-index: 999;
+    }
+
+    .faq {
+        padding: 3rem;
+    }
+
+    .faq h1 {
+        text-align: left;
+    }
+
+    .accordion .item .content p {
+        font-size: .7rem;
+    }
+}
